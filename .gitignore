@@ -14,3 +14,9 @@ $RECYCLE.BIN/
 *.log
 tmp/
 temp/
+
+# Android Build artifacts
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties

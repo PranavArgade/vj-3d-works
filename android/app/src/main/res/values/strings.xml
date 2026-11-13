@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VJ-3D-WORKS</string>
+    <string name="title_activity_main">VJ-3D-WORKS</string>
+    <string name="exit_confirm">Press back again to exit VJ-3D-WORKS</string>
+</resources>
