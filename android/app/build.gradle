@@ -18,12 +18,12 @@ android {
 
     signingConfigs {
         release {
-            // For easy one-click distribution and testing, uses standard release config with auto-key
-            // or debug keys so the APK is immediately installable on any Android phone
             storeFile file('release.keystore')
             storePassword 'vj3dworks'
             keyAlias 'vj3dkey'
             keyPassword 'vj3dworks'
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
