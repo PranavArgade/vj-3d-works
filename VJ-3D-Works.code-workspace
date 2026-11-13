@@ -1,0 +1,13 @@
+{
+    "folders": [
+        {
+            "name": "VJ 3D Works",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.html": "html"
+        }
+    }
+}
