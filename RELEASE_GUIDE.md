@@ -50,3 +50,4 @@ To give your clients a single, unchanging download URL:
    https://github.com/<your-username>/vj-3d-works-app/releases/latest/download/VJ-3D-WORKS.apk
    ```
    *(This URL automatically redirects to the newest APK whenever you upload an update!)*
+

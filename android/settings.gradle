@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "VJ-3D-WORKS"
 include ':app'
+

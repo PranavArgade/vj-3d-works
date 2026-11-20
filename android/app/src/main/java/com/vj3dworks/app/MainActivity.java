@@ -1,4 +1,4 @@
-package com.vj3dworks.billing;
+package com.vj3dworks.app;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -79,9 +79,14 @@ public class MainActivity extends AppCompatActivity {
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
-        settings.setDatabaseEnabled(true);
-        settings.setAllowFileAccess(true);
-        settings.setAllowContentAccess(true);
+
+        // Security best practices: disallow arbitrary local file and content access to prevent Play Protect flags
+        settings.setDatabaseEnabled(false);
+        settings.setAllowFileAccess(false);
+        settings.setAllowContentAccess(false);
+        settings.setAllowFileAccessFromFileURLs(false);
+        settings.setAllowUniversalAccessFromFileURLs(false);
+
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
         settings.setSupportZoom(true);
@@ -246,3 +251,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
