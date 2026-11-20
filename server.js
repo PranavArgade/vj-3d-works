@@ -67,6 +67,11 @@ const server = http.createServer((req, res) => {
         reqUrl = '/download.html';
     }
 
+    // Direct routing for login page
+    if (reqUrl.toLowerCase() === '/login' || reqUrl.toLowerCase() === '/signin' || reqUrl.toLowerCase() === '/login/') {
+        reqUrl = '/login.html';
+    }
+
     // Direct routing for app aliases
     if (reqUrl.toLowerCase() === '/vj-3d-works' || reqUrl.toLowerCase() === '/vj-3d-works.html' || reqUrl.toLowerCase() === '/bill') {
         reqUrl = '/Vj-3D-Works.html';
@@ -114,11 +119,12 @@ server.listen(PORT, '0.0.0.0', () => {
     const ips = getLocalIps();
     console.log(`====================================================`);
     console.log(`🚀 VJ-3D-WORKS Application Server Running!`);
+    console.log(`💻 Portal Login:       http://localhost:${PORT}/login.html`);
     console.log(`💻 Local PC App:       http://localhost:${PORT}/Vj-3D-Works.html`);
     console.log(`📲 Download & Install: http://localhost:${PORT}/download.html`);
     ips.forEach(item => {
         console.log(`📱 Mobile Web (via ${item.name}): http://${item.ip}:${PORT}/`);
-        console.log(`📲 Mobile Install Hub:            http://${item.ip}:${PORT}/download.html`);
+        console.log(`📲 Mobile Login Page:             http://${item.ip}:${PORT}/login.html`);
     });
     console.log(`🤖 Android APK Direct: http://localhost:${PORT}/VJ-3D-WORKS.apk`);
     console.log(`====================================================`);

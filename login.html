@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+    <title>Login &bull; VJ-3D-WORKS Portal</title>
+    <link rel="icon" type="image/png" href="icons/icon-64.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="theme-color" content="#1e3a8a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --surface: #151d30;
+            --surface-card: #1c263d;
+            --border: #222f49;
+            --border-light: #2e3e61;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --green: #10b981;
+            --gold: #f59e0b;
+            --red: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0b0f19 0%, #151d30 50%, #0e1628 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+        }
+
+        .login-card {
+            background: #ffffff;
+            color: #0f172a;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
+            width: 100%;
+            max-width: 430px;
+            padding: 36px 30px;
+            text-align: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .logo-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            padding: 8px 16px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .logo-wrap img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .brand-title span.blue { color: #1e3a8a; }
+        .brand-title span.gold { color: #d97706; }
+
+        .brand-sub {
+            color: #64748b;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 24px;
+        }
+
+        .alert-error {
+            background: #fef2f2;
+            border: 1px solid #fecdd3;
+            color: #b91c1c;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-align: left;
+            display: none;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.74rem;
+            font-weight: 800;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #94a3b8;
+        }
+
+        .form-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 14px 12px 42px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .toggle-pwd {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #64748b;
+            padding: 4px;
+        }
+
+        .row-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.96rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(30, 58, 138, 0.35);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            filter: brightness(1.08);
+            transform: translateY(-1px);
+        }
+
+        .card-footer {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.76rem;
+            color: #94a3b8;
+        }
+
+        .card-footer a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* LOGGED IN STATUS CARD */
+        .already-logged-box {
+            display: none;
+            background: #f0fdf4;
+            border: 1.5px solid #86efac;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+
+        <!-- BRAND HEADER -->
+        <div class="logo-wrap">
+            <img src="logo.jpg" alt="VJ-3D-WORKS Logo" onerror="this.src='icons/icon-96.png'">
+        </div>
+        <h1 class="brand-title"><span class="blue">VJ-</span><span class="gold">3D-</span><span class="blue">WORKS</span></h1>
+        <div class="brand-sub">Billing &amp; Invoice Portal</div>
+
+        <!-- ALREADY LOGGED IN VIEW -->
+        <div id="alreadyLoggedInBox" class="already-logged-box">
+            <div style="font-size:32px;margin-bottom:6px;">✅</div>
+            <div style="font-weight:800;color:#166534;font-size:1.05rem;margin-bottom:4px;">You are Logged In!</div>
+            <div style="font-size:0.82rem;color:#15803d;margin-bottom:16px;">Active User: <strong>Vijay068</strong></div>
+            <div style="display:flex;gap:10px;">
+                <a href="Vj-3D-Works.html" class="btn-submit" style="text-decoration:none;flex:2;padding:10px;">🚀 Go to Dashboard</a>
+                <button onclick="logoutFromPage()" class="btn-submit" style="background:#e11d48;flex:1;padding:10px;">Logout</button>
+            </div>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="pageLoginForm" onsubmit="handlePageLogin(event)">
+            <div id="pageLoginError" class="alert-error">
+                ⚠️ Invalid User ID or Password.
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">User ID / Username</label>
+                <div class="input-wrap">
+                    <span class="input-icon">👤</span>
+                    <input id="userIdInput" class="form-input" type="text" placeholder="Enter ID (Vijay068)" required autocomplete="username">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div class="input-wrap">
+                    <span class="input-icon">🔒</span>
+                    <input id="userPwdInput" class="form-input" type="password" placeholder="Enter Password" required autocomplete="current-password" style="padding-right:42px;">
+                    <button type="button" class="toggle-pwd" onclick="togglePagePwd()" title="Show/Hide Password">👁️</button>
+                </div>
+            </div>
+
+            <div class="row-options">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;">
+                    <input id="pageRememberMe" type="checkbox" checked style="accent-color:#1e3a8a;width:16px;height:16px;cursor:pointer;">
+                    <span>Keep me logged in</span>
+                </label>
+                <span style="font-size:0.75rem;color:#94a3b8;">100% Offline Auth</span>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span>🔓</span> <span>Sign In to Portal</span>
+            </button>
+        </form>
+
+        <div class="card-footer">
+            VJ-3D-WORKS &bull; Mob: +91 9159432954<br>
+            <div style="margin-top:8px;">
+                <a href="download.html">📲 Download App (iOS &amp; Android)</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const AUTH_KEY = 'vj3d_auth_session_v1';
+        const VALID_USER = 'Vijay068';
+        const VALID_PASS = 'Vijay@068';
+
+        function checkPageAuth() {
+            const isAuth = localStorage.getItem(AUTH_KEY) || sessionStorage.getItem(AUTH_KEY);
+            const form = document.getElementById('pageLoginForm');
+            const loggedBox = document.getElementById('alreadyLoggedInBox');
+
+            if (isAuth === 'true') {
+                if (form) form.style.display = 'none';
+                if (loggedBox) loggedBox.style.display = 'block';
+            } else {
+                if (form) form.style.display = 'block';
+                if (loggedBox) loggedBox.style.display = 'none';
+            }
+        }
+
+        function handlePageLogin(e) {
+            e.preventDefault();
+            const u = (document.getElementById('userIdInput')?.value || '').trim();
+            const p = document.getElementById('userPwdInput')?.value || '';
+            const remember = document.getElementById('pageRememberMe')?.checked;
+            const err = document.getElementById('pageLoginError');
+
+            if (u.toLowerCase() === VALID_USER.toLowerCase() && p === VALID_PASS) {
+                if (err) err.style.display = 'none';
+                if (remember) {
+                    localStorage.setItem(AUTH_KEY, 'true');
+                } else {
+                    sessionStorage.setItem(AUTH_KEY, 'true');
+                }
+                window.location.href = 'Vj-3D-Works.html';
+            } else {
+                if (err) {
+                    err.textContent = '⚠️ Invalid User ID or Password. Please try again.';
+                    err.style.display = 'block';
+                }
+                const pInput = document.getElementById('userPwdInput');
+                if (pInput) {
+                    pInput.value = '';
+                    pInput.focus();
+                }
+            }
+        }
+
+        function togglePagePwd() {
+            const p = document.getElementById('userPwdInput');
+            if (p) p.type = p.type === 'password' ? 'text' : 'password';
+        }
+
+        function logoutFromPage() {
+            localStorage.removeItem(AUTH_KEY);
+            sessionStorage.removeItem(AUTH_KEY);
+            checkPageAuth();
+        }
+
+        window.addEventListener('DOMContentLoaded', checkPageAuth);
+    </script>
+</body>
+
+</html>

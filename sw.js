@@ -1,10 +1,11 @@
-const CACHE_NAME = 'vj3d-works-v6';
+const CACHE_NAME = 'vj3d-works-v7';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './Vj-3D-Works.html',
   './Bill Generator.html',
   './download.html',
+  './login.html',
   './manifest.json',
   './libs/chart.umd.min.js',
   './libs/xlsx.full.min.js',
